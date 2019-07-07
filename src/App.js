@@ -16,14 +16,23 @@ const Timer = ({ currentValue, resetTimerFunction }) => {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentValue: 150 }
+    this.state = {}
+
+
+
+  }
+  // Start the timer
+  startTimer = () => {
+    // This.refs
+    this.setState({
+      currentValue: Number(this.refs.initialValue.value)
+    })
 
     setInterval(() => {
       this.setState({
         currentValue: this.state.currentValue - 1
       })
     }, 1000);
-
   }
   // Reset the current value to 150
   resetCurrent = () => {
@@ -37,6 +46,8 @@ class App extends Component {
 
         <Timer currentValue={this.state.currentValue}
           resetTimerFunction={this.resetCurrent}></Timer>
+        <input type="text" ref="initialValue"></input>
+        <button onClick={this.startTimer}>Start</button>
       </div>
 
     )
