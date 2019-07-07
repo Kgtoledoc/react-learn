@@ -3,13 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 
 
-const Timer = ({ currentValue, resetTimerFunction }) => {
-  return (
-    <div className="Timer" onClick={resetTimerFunction}>
-      {currentValue}
-    </div>
-  )
+class Greeting extends Component {
+  componentWillMount() {
+    console.log("In componentWillMount");
+  }
+  componentDidMount() {
+    console.log("In componentDidMount");
+  }
+  componentWillReceiveProps() {
+    console.log('In componentWillReceiveProps');
 
+  }
+  shouldComponentUpdate() {
+    console.log('In shouldComponentUpdate');
+    return true;
+  }
+  componentDidUpdate() {
+    console.log('In componentDidUpdate');
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+  render() {
+    return (
+      <div>{this.props.greeting}</div>
+    )
+  }
 }
 
 //function App() {
@@ -17,45 +36,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startValue: ''
+      greeting: "Hello"
+
     }
-
-
-
-  }
-  // Start the timer
-  startTimer = () => {
-
-    this.setState({
-      currentValue: Number(this.state.startValue)
-    })
-
     setInterval(() => {
       this.setState({
-        currentValue: this.state.currentValue - 1
+        greeting: "Hi"
       })
-    }, 1000);
+    }, 5000)
+
+
+
   }
-  // Reset the current value to 150
-  resetCurrent = () => {
-    this.setState({
-      currentValue: 150
-    })
-  }
-  handleInputChange = (event) => {
-    this.setState({
-      startValue: event.target.value
-    });
-  }
+
   render() {
     return (
       <div className="App" >
 
-        <Timer currentValue={this.state.currentValue}
-          resetTimerFunction={this.resetCurrent}></Timer>
-        <input type="text" value={this.state.startValue}
-          onChange={this.handleInputChange}></input>
-        <button onClick={this.startTimer}>Start</button>
+        <Greeting greeting={this.state.greeting}></Greeting>
       </div>
 
     )
