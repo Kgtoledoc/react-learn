@@ -1,0 +1,38 @@
+import React from 'react';
+import Author from './Author'
+
+const Book = ({ book, author, handleDelete }) => {
+  // ...
+  const handleClick = (event) => {
+    event.preventDefault();
+    handleDelete(book.id)
+
+  }
+
+  // format the price of book list
+  const formatPrice = priceInCents => {
+    if (priceInCents === undefined) {
+      return '';
+    }
+    return `$ ${(priceInCents / 100).toFixed(2)}`;
+  }
+
+
+
+  return (
+    <li className="book">
+      <div className="title">
+        {book.title}
+      </div>
+      <Author id={book.authorId} author={author} />
+      <div className="price">
+        {formatPrice(book.price)}
+      </div>
+      <a href="#" className="delete" onClick={handleClick}>
+        Delete
+    </a>
+
+    </li>
+  );
+}
+export default Book

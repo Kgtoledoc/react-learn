@@ -1,0 +1,21 @@
+{
+  "data": {
+
+
+    "books": [{
+        "id": "1",
+        "title": "Javascript",
+        "authorId": 1
+      },
+      {
+        "id": "2",
+        "title": "Java Oracle",
+        "authorId": 2
+      }
+    ],
+    "authors": []
+
+  }
+
+
+}
