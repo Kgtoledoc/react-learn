@@ -24,7 +24,9 @@ const Book = ({ book, author, handleDelete }) => {
       <div className="title">
         {book.title}
       </div>
-      <Author id={book.authorId} author={author} />
+      {book.authors.map(author =>
+        <Author {...author} />
+      )}
       <div className="price">
         {formatPrice(book.price)}
       </div>

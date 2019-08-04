@@ -5,10 +5,17 @@ import Form from './Form'
 class BookList extends Component {
   constructor(props) {
     super(props);
-    this.state = { books: this.props.books, author: this.props.authors };
+    this.state = { books: [], author: {} };
 
     //this.deleteBook = this.deleteBook.bind(this);
 
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/api/books").then(response => response.json())
+      .then(books => {
+        this.setState({ books })
+      });
   }
 
   deleteBook = (id) => {
@@ -36,7 +43,6 @@ class BookList extends Component {
             <Book
               key={book.id}
               book={book}
-              author={this.state.author[book.authorId]}
               handleDelete={this.deleteBook}
             />
           );

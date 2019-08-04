@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Author = ({ id, author }) => (
+const Author = ({ author }) => (
   <div className="Author">
-    {id} -- {author}
+    {author}
   </div>
 )
 
